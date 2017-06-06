@@ -74,3 +74,13 @@ class Car{
 def car = new Car()
 car.carName = "Lambo Hurracan"
 car.printCarName()
+
+println "\n\n Closure Delegates::"
+
+def myClosure = {
+	carName = "Ferarri Spyder"
+	printCarName()
+}
+
+myClosure.delegate = car
+myClosure()
