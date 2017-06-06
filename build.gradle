@@ -1,0 +1,76 @@
+task groovy <<{}
+
+//Function calls
+def doubleit(n){
+	n+n
+}
+
+def oneArgs(n){
+	println "${n}"
+}
+
+def noArgs(){
+	println "No Args called"
+}
+
+
+// Variable play and function call
+
+println "\n\n Vars and Functions :: Test"
+def a = "shan"
+println "${doubleit(5)}"
+println "${doubleit(a)} \ntest  ${a.class} \n\n"
+
+oneArgs 10
+
+noArgs()
+
+// Closures
+
+println "\n\n Closure Test::"
+def foo = "This a test for closure"
+
+def closureCall = {
+	println "test call closure"
+	println "${foo} \n\n"
+}
+
+// Assigning closure call to a variable
+def bar = closureCall;
+closureCall()
+bar()
+
+// Args in closure
+
+println "\n\n Args Test ::"
+def doubleIt = {x -> x+x}
+def applyTwice (func,var){
+	func(func(var))
+}
+
+println "${doubleIt(10)}"
+println "${applyTwice(doubleIt,20)} \n\n"
+
+
+
+//Working with lists
+
+println "\n\n List Test ::"
+def myList = ["Wow ** list test",1,123,"test"]
+
+myList.each{println "$it"}
+
+
+// Classes Groovy
+
+println "\n\n Class Test ::"
+class Car{
+	String carName = "Lambo"
+	def printCarName(){
+		println " Car Name is :: ${carName}"
+	}
+}
+
+def car = new Car()
+car.carName = "Lambo Hurracan"
+car.printCarName()
